@@ -7,7 +7,7 @@ namespace Catalog.API.Products.CreateProduct
      : ICommand<CreateProductResult>;
     public record CreateProductResult(Guid Id);
 
-    public class CreateProductCommandHandler 
+    internal class CreateProductCommandHandler 
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
