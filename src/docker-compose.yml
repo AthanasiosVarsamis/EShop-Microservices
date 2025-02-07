@@ -5,6 +5,8 @@ services:
     image: postgres
   basketdb:
     image: postgres
+  disributedcache:
+    image: redis 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
