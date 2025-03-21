@@ -1,6 +1,19 @@
- var builder = WebApplication.CreateBuilder(args);
+using Ordering.API;
+using Ordering.Application;
+using Ordering.Infrastructure;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container for di
+
+//infrastructure - EF Core
+//Application - MediatR
+//Api - Carter, HealthChecks,,,
+
+builder.Services
+    .AddApplicationServices()
+    .AddInfrastructureServices(builder.Configuration)
+    .AddApiServices();
 
 var app = builder.Build();
 
