@@ -12,18 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 //infrastructure - EF Core
 //Application - MediatR
-var assembly = typeof(Program).Assembly;
-builder.Services.AddMediatR(config =>
-{
-    config.RegisterServicesFromAssembly(assembly);
-    config.AddOpenBehavior(typeof(ValidationBehavior<,>));
-});
 //Api - Carter, HealthChecks,,,
 
 builder.Services
     .AddApplicationServices()
     .AddInfrastructureServices(builder.Configuration)
-    .AddApiServices();
+    .AddApiServices(builder.Configuration);
 
 var app = builder.Build();
 

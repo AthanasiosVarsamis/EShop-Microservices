@@ -17,13 +17,13 @@ namespace Ordering.Application.Orders.Queries.GetOrdersByName
                 .Include(o => o.OrderItems)
                 .AsNoTracking()
                 .Where(o => o.OrderName.Value == query.name)
-                .OrderBy(o => o.OrderName)
+                .OrderBy(o => o.OrderName.Value)
                 .ToListAsync(cancellationToken);
             if (orders == null)
             {
                 throw new NotFoundException($"Order with name {query.name} not found");
             }
-            var ordersDtos=orders.ToOrderDtoList();
+            var ordersDtos = orders.ToOrderDtoList();
 
             return new GetOrderByNameResult(ordersDtos);
         }

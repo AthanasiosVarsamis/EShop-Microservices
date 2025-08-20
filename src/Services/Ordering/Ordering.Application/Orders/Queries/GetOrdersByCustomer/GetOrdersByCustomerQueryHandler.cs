@@ -12,7 +12,7 @@ namespace Ordering.Application.Orders.Queries.GetOrdersByCustomer
                 .Include(o => o.OrderItems)
                 .AsNoTracking()
                 .Where(o => o.CustomerId == CustomerId.Of(query.customerId))
-                .OrderBy(o => o.OrderName)
+                .OrderBy(o => o.OrderName.Value)
                 .ToListAsync();
 
             return new GetOrdersByCustomerResult(orders.ToOrderDtoList());
