@@ -16,6 +16,8 @@ public class CheckoutBasketEndpoint : ICarterModule
             var result = await sender.Send(command);
 
             var response = result.Adapt<CheckoutBasketResponse>();
+
+            return Results.Ok(response);
         })
         .WithName("CheckoutBasket")
         .Produces<CheckoutBasketResponse>(StatusCodes.Status201Created)

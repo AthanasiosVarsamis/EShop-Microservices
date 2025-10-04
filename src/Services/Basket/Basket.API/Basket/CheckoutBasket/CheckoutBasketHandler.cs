@@ -32,6 +32,7 @@ public class CheckoutBasketHandler(IBasketRepository repository, IPublishEndpoin
         eventMessage.TotalPrice = basket.TotalPrice;
 
         await publishEndpoint.Publish(eventMessage,cancellationToken);
+        await repository.DeleteBasket(command.BasketCheckoutDto.UserName, cancellationToken);
 
         return new CheckoutBasketResult(true);
     }

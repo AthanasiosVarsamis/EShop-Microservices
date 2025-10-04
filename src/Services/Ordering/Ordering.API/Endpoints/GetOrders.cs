@@ -7,6 +7,7 @@ namespace Ordering.API.Endpoints;
 public record GetOrdersResponse(PaginatedResult<OrderDto> Orders);
 public class GetOrders : ICarterModule
 {
+
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet("/orders",
